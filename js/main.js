@@ -6,7 +6,7 @@ window.onload = () => {
              .register('./sw.js');
   }
   Notification.requestPermission(function(status) {
-    alert('Notification permission status:', status);
+    console.log('Notification permission status:', status);
   });
   function displayNotification() {
     if (Notification.permission == 'granted') {
