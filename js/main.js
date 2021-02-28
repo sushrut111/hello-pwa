@@ -6,6 +6,6 @@ window.onload = () => {
              .register('./sw.js');
   }
   Notification.requestPermission(function(status) {
-    console.log('Notification permission status:', status);
+    alert('Notification permission status:', status);
   });
 }
