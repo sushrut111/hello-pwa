@@ -31,7 +31,8 @@ function subscribeUser() {
     navigator.serviceWorker.ready.then(function(reg) {
       console.log("inside subscribe");
       reg.pushManager.subscribe({
-        userVisibleOnly: true
+        userVisibleOnly: true,
+        applicationServerKey: "BITeUzZcUPoOJ2RXPRPvekF7j0gpb3Ausx7qBTkobn1CktxKQfU2kr_zoor518ubFhzkxMfTzdYcwjHDp_VgkB8"
       }).then(function(sub) {
         console.log('Endpoint URL: ', sub.endpoint);
         console.log("in then")
