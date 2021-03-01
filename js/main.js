@@ -29,19 +29,22 @@ window.onload = () => {
 function subscribeUser() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(function(reg) {
-
+      console.log("inside subscribe");
       reg.pushManager.subscribe({
         userVisibleOnly: true
       }).then(function(sub) {
         console.log('Endpoint URL: ', sub.endpoint);
         console.log("in then")
       }).catch(function(e) {
+        console.log("inside catch");
         if (Notification.permission === 'denied') {
           console.warn('Permission for notifications was denied');
         } else {
           console.error('Unable to subscribe to push', e);
         }
       });
+
+      console.log("outside");
     })
   }
 }
