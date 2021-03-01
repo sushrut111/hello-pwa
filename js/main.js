@@ -29,18 +29,12 @@ window.onload = () => {
 function subscribeUser() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(function(reg) {
-      console.log("inside subscribe");
       reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: "BITeUzZcUPoOJ2RXPRPvekF7j0gpb3Ausx7qBTkobn1CktxKQfU2kr_zoor518ubFhzkxMfTzdYcwjHDp_VgkB8"
       }).then(function(sub) {
-        console.log(sub.endpoint);
-        console.log('auth: ', sub.getKey('auth'));
-        console.log('p256dh: ', sub.getKey('p256dh'));
-
-        console.log("in then")
+        console.log(JSON.stringify(sub));
       }).catch(function(e) {
-        console.log("inside catch");
         if (Notification.permission === 'denied') {
           console.warn('Permission for notifications was denied');
         } else {
@@ -48,7 +42,6 @@ function subscribeUser() {
         }
       });
 
-      console.log("outside");
     })
   }
 }
