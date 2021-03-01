@@ -34,7 +34,10 @@ function subscribeUser() {
         userVisibleOnly: true,
         applicationServerKey: "BITeUzZcUPoOJ2RXPRPvekF7j0gpb3Ausx7qBTkobn1CktxKQfU2kr_zoor518ubFhzkxMfTzdYcwjHDp_VgkB8"
       }).then(function(sub) {
-        console.log('Endpoint URL: ', sub.endpoint);
+        console.log(sub.endpoint);
+        console.log('auth: ', sub.getKey('auth'));
+        console.log('p256dh: ', sub.getKey('p256dh'));
+
         console.log("in then")
       }).catch(function(e) {
         console.log("inside catch");
