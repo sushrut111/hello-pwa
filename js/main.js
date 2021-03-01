@@ -12,7 +12,7 @@ window.onload = () => {
         } else {
           // We have a subscription, update the database
           console.log('Subscription object: ', JSON.stringify(sub));
-          addSubscription();
+          addSubscription(JSON.stringify(sub));
         }
       });
     })
@@ -34,7 +34,7 @@ function subscribeUser() {
         applicationServerKey: "BITeUzZcUPoOJ2RXPRPvekF7j0gpb3Ausx7qBTkobn1CktxKQfU2kr_zoor518ubFhzkxMfTzdYcwjHDp_VgkB8"
       }).then(function(sub) {
         console.log(JSON.stringify(sub));
-        addSubscription();
+        addSubscription(JSON.stringify(sub));
       }).catch(function(e) {
         if (Notification.permission === 'denied') {
           console.warn('Permission for notifications was denied');
@@ -48,8 +48,8 @@ function subscribeUser() {
 }
 subscribeUser();
 
-const addSubscription = () => {
-  var data = "subscription=%7B%22endpoint%22%3A%22https%3A%2F%2Ffcm.googleapis.com%2Ffcm%2Fsend%2Ff6xbkT3te48%3AAPA91bGtbTHgfGwC_hWXWREqcd4nV5sZircVQ21KQnSjpONw3sCPFuvwSw0EG1sWDLQMi6ynvMlhq7okUJhQomwYoad2-Qu2Uko2jxv4yTcoRm21xOXH5s0ApKHX4_Ls6fyA9N8Cp27v%22%2C%22expirationTime%22%3Anull%2C%22keys%22%3A%7B%22p256dh%22%3A%22BI5SmCWibgxAWE79uC-m2Suw29nDjeiLtEUr9_xuRk3SQMTP5DdrdZGUPndXceYiN_ez0cuqI3EJGvNSgY8UKXg%22%2C%22auth%22%3A%22ulN0rU2xMM0xgajeN2YypQ%22%7D%7D";
+const addSubscription = (sub) => {
+  var data = "subscription="+encodeURI(sub);
 
   var xhr = new XMLHttpRequest();
   xhr.withCredentials = true;
